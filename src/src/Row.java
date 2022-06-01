@@ -3,6 +3,7 @@
  */
 package src;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +30,8 @@ public class Row extends JPanel implements NodeListener,java.io.Serializable {
 		
 		this.length = length;
 		this.CorrectFormula = CorrectFormula;
+		
+		setBackground(new Color(31,41,55));
 		
 		guess = new Guess(length,CorrectFormula);
 		buttonArray = new CoolNode[length];

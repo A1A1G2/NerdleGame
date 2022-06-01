@@ -28,6 +28,7 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Component;
+import java.awt.SystemColor;
 
 public class gameFrame extends JFrame implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
@@ -55,30 +56,32 @@ public class gameFrame extends JFrame implements java.io.Serializable {
 	 * @wbp.parser.constructor
 	 */
 	public gameFrame(int length,int width, ArrayList<String> CorrectFormula) {
+		setName("frame0");
+		setResizable(false);
 		this.length = length;
 		this.width1 = width;
 		this.CorrectFormula=CorrectFormula;
 		row = new Row[6];
-		
-		setResizable(true);
 		setBackground(new Color(240, 240, 240));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setPreferredSize(new Dimension(900, 900));
-		setMinimumSize(new Dimension(600, 600));
+		setPreferredSize(new Dimension(800, 631));
+		setMinimumSize(new Dimension(700, 630));
 		setBounds(100, 100, 450, 300);
 		
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(31,41,55));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-		gbl_contentPane.rowHeights = new int[]{50, 50, 50, 50, 50, 50, 50, 50};
+		gbl_contentPane.rowHeights = new int[]{50, 50, 50, 50, 50, 50, 50, 86};
 		gbl_contentPane.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 52, 0, 0};
 		contentPane.setLayout(gbl_contentPane);
 		
 		initializeRows();
 		enableRow(line);
 		JLabel lblNewLabel = new JLabel("0:0:0");//timer
+		lblNewLabel.setForeground(Color.WHITE);
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.insets = new Insets(0, 0, 10, 5);
 		gbc_lblNewLabel.gridx = 8;
@@ -103,7 +106,7 @@ public class gameFrame extends JFrame implements java.io.Serializable {
 		timer.start();
 		contentPane.add(lblNewLabel, gbc_lblNewLabel);
 		
-		JButton exitButton = new JButton("exit");
+		CoolKeyboard exitButton = new CoolKeyboard("exit");
 		exitButton.setFocusable(false);
 		GridBagConstraints gbc_exitButton = new GridBagConstraints();
 		gbc_exitButton.insets = new Insets(0, 0, 10, 5);
@@ -133,17 +136,19 @@ public class gameFrame extends JFrame implements java.io.Serializable {
 		this.CorrectFormula=CorrectFormula;
 		row = new Row[6];
 		
-		setResizable(true);
 		setBackground(new Color(240, 240, 240));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setPreferredSize(new Dimension(900, 900));
-		setMinimumSize(new Dimension(600, 400));
+		setPreferredSize(new Dimension(800, 631));
+		setMinimumSize(new Dimension(700, 630));
 		setBounds(100, 100, 450, 300);
 		
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(31,41,55));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
+		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+		gbl_contentPane.rowHeights = new int[]{50, 50, 50, 50, 50, 50, 50, 86};
 		gbl_contentPane.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 52, 0, 0};
 		contentPane.setLayout(gbl_contentPane);
 		
@@ -180,6 +185,7 @@ public class gameFrame extends JFrame implements java.io.Serializable {
 		gbc_lblNewLabel.insets = new Insets(0, 0, 10, 5);
 		gbc_lblNewLabel.gridx = 8;
 		gbc_lblNewLabel.gridy = 1;
+		lblNewLabel.setForeground(Color.WHITE);
 		timer = new Timer(1000, new ActionListener() {
 			
 			@Override
@@ -200,11 +206,12 @@ public class gameFrame extends JFrame implements java.io.Serializable {
 		timer.start();
 		contentPane.add(lblNewLabel, gbc_lblNewLabel);
 		
-		JButton exitButton = new JButton("exit");
+		JButton exitButton = new CoolKeyboard("exit");
 		GridBagConstraints gbc_exitButton = new GridBagConstraints();
 		gbc_exitButton.insets = new Insets(0, 0, 10, 5);
 		gbc_exitButton.gridx = 8;
 		gbc_exitButton.gridy = 0;
+		exitButton.setFocusable(false);
 		exitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for(exitListener nl:listeners) {

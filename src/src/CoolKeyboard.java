@@ -25,8 +25,9 @@ public class CoolKeyboard extends JButton{
 	public CoolKeyboard(String s) {
 		active = false;
 		setText(s);
-		colorActivated = new Color(237, 213, 209);
-		colorNotActivated = new Color(222, 199, 195);
+		colorActivated = new Color(226,232,240);
+		colorNotActivated = new Color(203, 213, 225);
+		color = colorActivated;
 		border = getBackground();
 		radius = 10;
 		setFocusable(false);
@@ -36,12 +37,13 @@ public class CoolKeyboard extends JButton{
 		addMouseListener(new MouseAdapter(){
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				border = Color.BLACK;
-				setBorderColor(Color.black);
+				active=true;
+				color = colorNotActivated;
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				border = getBackground();
+				active=false;
+				color = colorActivated;
 				
 			}
 			@Override
@@ -91,10 +93,19 @@ public class CoolKeyboard extends JButton{
 	protected void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		g2.setColor(border);
+		g2.setColor(new Color(31,41,55));
 		g2.fillRoundRect(0, 0, getWidth(), getHeight(), radius, radius);
-		g2.setColor(colorActivated);
-		g2.fillRoundRect(1, 1, getWidth()-2, getHeight()-2, radius, radius);
+		
+		if(active) {
+			g2.setColor(Color.BLACK);
+			g2.fillRoundRect(2, 2, getWidth()-4, getHeight()-4, radius, radius);
+			g2.setColor(color);
+			g2.fillRoundRect(3, 3, getWidth()-6, getHeight()-6, radius, radius);
+		}
+		else {
+			g2.setColor(color);
+			g2.fillRoundRect(1, 1, getWidth()-2, getHeight()-2, radius, radius);
+		}
 		super.paintComponent(g);
 	}
 	

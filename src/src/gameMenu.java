@@ -60,14 +60,14 @@ public class gameMenu implements exitListener{
 		frame.getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		frame.getContentPane().setFocusable(false);
 		frame.setFont(new Font("Bahnschrift", Font.PLAIN, 18));
-		frame.getContentPane().setBackground(new Color(250, 240, 230));
+		frame.getContentPane().setBackground(new Color(31,41,55));
 		frame.setBackground(UIManager.getColor("ToolTip.background"));
 		frame.setForeground(UIManager.getColor("ToolTip.background"));
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton NewGameButton = new JButton("New Game\r\n");
+		JButton NewGameButton = new CoolKeyboard("New Game\r\n");
 		NewGameButton.setToolTipText("yeni oyun olu\u015Fturmak i\u00E7in bas\u0131n\u0131z.\u0130yi oyunlar");
 		NewGameButton.setFocusable(false);
 		NewGameButton.setForeground(new Color(244, 164, 96));
@@ -89,7 +89,7 @@ public class gameMenu implements exitListener{
 		NewGameButton.setBounds(128, 86, 146, 50);
 		frame.getContentPane().add(NewGameButton);
 		
-		JButton statisticsButton = new JButton("Statistics");
+		JButton statisticsButton = new CoolKeyboard("Statistics");
 		statisticsButton.setCursor(Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR));
 		statisticsButton.setToolTipText("istatistikleri g\u00F6rmek i\u00E7in bas\u0131n\u0131z");
 		statisticsButton.setFocusable(false);
@@ -106,11 +106,11 @@ public class gameMenu implements exitListener{
 		statisticsButton.setBounds(128, 146, 146, 50);
 		frame.getContentPane().add(statisticsButton);
 		
-		JLabel lblNewLabel = new JLabel("Nerdle");
-		lblNewLabel.setForeground(new Color(255, 160, 122));
+		JLabel lblNewLabel = new JLabel("nerdle");
+		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setLabelFor(frame);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Papyrus", Font.PLAIN, 20));
+		lblNewLabel.setFont(new Font("Ink Free", Font.BOLD, 26));
 		lblNewLabel.setBounds(10, 9, 146, 38);
 		frame.getContentPane().add(lblNewLabel);
 		
@@ -120,7 +120,7 @@ public class gameMenu implements exitListener{
 		lblNewLabel_1.setBounds(236, 223, 162, 30);
 		frame.getContentPane().add(lblNewLabel_1);
 		
-		JButton exitButton = new JButton("Exit");
+		JButton exitButton = new CoolKeyboard("Exit");
 		exitButton.setFocusable(false);
 		exitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -131,7 +131,7 @@ public class gameMenu implements exitListener{
 		exitButton.setToolTipText("Oyundan çýkmak için basýn");
 		frame.getContentPane().add(exitButton);
 		
-		continueButton = new JButton("Continue");
+		continueButton = new CoolKeyboard("Continue");
 		continueButton.setToolTipText("Kay\u0131tl\u0131 oyuna devam etmek i\u00E7in bas\u0131n\u0131z.\u0130yi oyunlar");
 		continueButton.setFocusable(false);
 		continueButton.setFocusable(false);
@@ -171,7 +171,7 @@ public class gameMenu implements exitListener{
 		continueButton.setBounds(128, 26, 146, 50);
 		frame.getContentPane().add(continueButton);
 		
-		JButton testButton = new JButton("TEST");
+		JButton testButton = new CoolKeyboard("TEST");
 		testButton.setFocusable(false);
 		testButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

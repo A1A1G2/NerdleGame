@@ -39,8 +39,8 @@ public class CoolNode extends JButton{
 		active = false;
 		enabled = false;
 		
-		colorNotDisabled = new Color(237, 213, 209);
-		colorDisabled = new Color(222, 199, 195);
+		colorNotDisabled = new Color(160,160,150);
+		colorDisabled = new Color(152,148,132);
 		colorCorrect = new Color(91, 245, 103);
 		colorSemiCorrect = new Color(202, 209, 4);
 		colorNotCorrect = new Color(230, 94, 16);
@@ -118,12 +118,12 @@ public class CoolNode extends JButton{
 				border = Color.BLACK;
 			}
 			else {
-				border = getBackground();
+				border = new Color(31,41,55);
 			}
 			color = colorNotDisabled;
 		}
 		else {
-			border = getBackground();
+			border = new Color(31,41,55);
 			
 			switch (state) {
 			case 0:
@@ -146,17 +146,23 @@ public class CoolNode extends JButton{
 		
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		g2.setColor(border);
 		
-		if(border == Color.black) {
-			g2.fillRoundRect(1, 1, getWidth()-2, getHeight()-2, radius, radius);
+		g2.setColor(new Color(31,41,55));
+		g2.fillRoundRect(0, 0, getWidth(), getHeight(), radius, radius);
+		
+		if(active) {
+			g2.setColor(border);
+			g2.fillRoundRect(2, 2, getWidth()-4, getHeight()-4, radius, radius);
+			g2.setColor(color);
+			g2.fillRoundRect(3, 3, getWidth()-6, getHeight()-6, radius, radius);
 		}
 		else {
-			g2.fillRoundRect(0, 0, getWidth(), getHeight(), radius, radius);
+			g2.setColor(color);
+			g2.fillRoundRect(1, 1, getWidth()-2, getHeight()-2, radius, radius);
 		}
 		
-		g2.setColor(color);
-		g2.fillRoundRect(2, 2, getWidth()-4, getHeight()-4, radius, radius);
+		//g2.setColor(color);
+		//g2.fillRoundRect(2, 2, getWidth()-4, getHeight()-4, radius, radius);
 		super.paintComponent(g);
 	}
 	
