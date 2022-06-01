@@ -64,13 +64,15 @@ public class gameFrame extends JFrame implements java.io.Serializable {
 		setBackground(new Color(240, 240, 240));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setPreferredSize(new Dimension(900, 900));
-		setMinimumSize(new Dimension(600, 400));
+		setMinimumSize(new Dimension(600, 600));
 		setBounds(100, 100, 450, 300);
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
+		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+		gbl_contentPane.rowHeights = new int[]{50, 50, 50, 50, 50, 50, 50, 50};
 		gbl_contentPane.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 52, 0, 0};
 		contentPane.setLayout(gbl_contentPane);
 		
@@ -102,6 +104,7 @@ public class gameFrame extends JFrame implements java.io.Serializable {
 		contentPane.add(lblNewLabel, gbc_lblNewLabel);
 		
 		JButton exitButton = new JButton("exit");
+		exitButton.setFocusable(false);
 		GridBagConstraints gbc_exitButton = new GridBagConstraints();
 		gbc_exitButton.insets = new Insets(0, 0, 10, 5);
 		gbc_exitButton.gridx = 8;
@@ -549,6 +552,7 @@ private void initializeKeyboard() {
 					row[line].nodesDisabled();
 					row[line].update();
 					timer.stop();
+					KeyboardGuess.setEnabled(false);
 					System.out.println("finded");
 				}else if(line<length-1) {
 					row[line].clear();
@@ -559,9 +563,16 @@ private void initializeKeyboard() {
 					row[line].buttonArray[0].active=true;
 					row[line].update();
 				}
+				else {
+					finded = false;
+					row[line].setStates();
+					row[line].clear();
+					row[line].nodesDisabled();
+					row[line].update();
+					timer.stop();
+					KeyboardGuess.setEnabled(false);
+				}
 			}
-			
-			
 		}
 	});
 	

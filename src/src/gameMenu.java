@@ -19,6 +19,7 @@ import javax.swing.UIManager;
 
 import java.awt.Color;
 import javax.swing.ImageIcon;
+import java.awt.Cursor;
 
 public class gameMenu implements exitListener{
 	private JFrame frame;
@@ -26,6 +27,7 @@ public class gameMenu implements exitListener{
 	public ArrayList<String> CorrectFormula;
 	Guess[] gss = new Guess[6];
 	int[] time = new int[3];
+	JButton continueButton;
 	/**
 	 * Launch the application.
 	 */
@@ -54,6 +56,8 @@ public class gameMenu implements exitListener{
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
+		frame.getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		frame.getContentPane().setFocusable(false);
 		frame.setFont(new Font("Bahnschrift", Font.PLAIN, 18));
 		frame.getContentPane().setBackground(new Color(250, 240, 230));
@@ -86,6 +90,7 @@ public class gameMenu implements exitListener{
 		frame.getContentPane().add(NewGameButton);
 		
 		JButton statisticsButton = new JButton("Statistics");
+		statisticsButton.setCursor(Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR));
 		statisticsButton.setToolTipText("istatistikleri g\u00F6rmek i\u00E7in bas\u0131n\u0131z");
 		statisticsButton.setFocusable(false);
 		statisticsButton.setForeground(new Color(255, 140, 0));
@@ -116,6 +121,7 @@ public class gameMenu implements exitListener{
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		JButton exitButton = new JButton("Exit");
+		exitButton.setFocusable(false);
 		exitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -125,7 +131,7 @@ public class gameMenu implements exitListener{
 		exitButton.setToolTipText("Oyundan çýkmak için basýn");
 		frame.getContentPane().add(exitButton);
 		
-		JButton continueButton = new JButton("Continue");
+		continueButton = new JButton("Continue");
 		continueButton.setToolTipText("Kay\u0131tl\u0131 oyuna devam etmek i\u00E7in bas\u0131n\u0131z.\u0130yi oyunlar");
 		continueButton.setFocusable(false);
 		continueButton.setFocusable(false);
@@ -181,5 +187,25 @@ public class gameMenu implements exitListener{
 	}
 	public void exitted() {
 		frame.setVisible(true);
+		String fileName = "gameFrame.dat";
+		try {
+			ObjectInputStream reader = new ObjectInputStream( 
+					new FileInputStream( fileName ) );
+			CorrectFormula = (ArrayList<String>) reader.readObject();
+			gss = (Guess[]) reader.readObject();
+			time = (int[]) reader.readObject();
+			continueButton.setVisible(true);
+			reader.close();
+		} 
+		catch( IOException e ) {
+			continueButton.setVisible(false);
+			System.out.println("game frame An exception has occured during file reading.");
+			//e.printStackTrace();
+		} 
+		catch( ClassNotFoundException e ) {
+			continueButton.setVisible(false);
+			System.out.println("game frame An exception has occured while processing read records.");
+			//e.printStackTrace();
+		}
 	}
 }
