@@ -15,13 +15,13 @@ public class Statistics implements java.io.Serializable{
 	private int basariliOyunSayisi=0;
 	
 	public Statistics(int yarida, int basari, int satirSayisi, int sure,boolean set) {
-		
+		System.out.println("\n------------\n basari "+basari+"\n satir sayisi  "+satirSayisi+"\n sure "+sure+" \n");
 		deSerialize();
-		System.out.println("\nyarida "+yarida+"\n basarisiz oyun saati "+basari+"\n satir sayisi  "+satirSayisi+"\n sure "+sure+" \n");
+		System.out.println("\nyarida "+this.yarida+"\n basarisiz oyun sayisi "+this.basarisizOyunSayisi+"\n satir sayisi  "+this.satirSayisi+"\n sure "+this.sure+" \n");
 		if(set) {
 			setStatistics(yarida, basari, satirSayisi, sure);
 		}
-		System.out.println("yarida "+this.yarida+"\n basarisiz oyun saati "+this.basarisizOyunSayisi+"\n satir sayisi  "+this.satirSayisi+"\n sure "+this.sure+"\n  basarili Oyun sayisi"+this.basariliOyunSayisi+ " \n");
+		System.out.println("yarida "+this.yarida+"\n basarisiz oyun sayisi "+this.basarisizOyunSayisi+"\n satir sayisi  "+this.satirSayisi+"\n sure "+this.sure+"\n  basarili Oyun sayisi"+this.basariliOyunSayisi+ " \n");
 	}
 	public void setStatistics(int a,int b,int c,int d) {
 		if(a==1) {
@@ -33,9 +33,9 @@ public class Statistics implements java.io.Serializable{
 			serialize();
 		}
 		else{
-			basariliOyunSayisi++;
 			newSatirSayisi(c);
 			newSure(d);
+			basariliOyunSayisi++;
 			serialize();
 		}
 	}
@@ -43,7 +43,7 @@ public class Statistics implements java.io.Serializable{
 		try {
 			int []values = new int[6];
 			values[0]=yarida;
-			values[1]=basariliOyunSayisi;
+			values[1]=basarisizOyunSayisi;
 			values[2]=basariliOyunSayisi;
 			values[3]=satirSayisi;
 			values[4]=sure;
@@ -85,10 +85,10 @@ public class Statistics implements java.io.Serializable{
 		}
 	}
 	private void newSure(int deger) {
-		sure = ((sure*basariliOyunSayisi)+deger)/basariliOyunSayisi;
+		sure = ((this.sure*this.basariliOyunSayisi)+deger)/(basariliOyunSayisi+1);
 	}
 	private void newSatirSayisi(int deger) {
-		sure = ((satirSayisi*basariliOyunSayisi)+deger)/basariliOyunSayisi;
+		satirSayisi = ((satirSayisi*basariliOyunSayisi)+deger)/(basariliOyunSayisi+1);
 	}
 	public int getYarida() {
 		return yarida;

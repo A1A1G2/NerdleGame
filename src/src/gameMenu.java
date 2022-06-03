@@ -115,6 +115,7 @@ public class gameMenu implements exitListener{
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("20011068 Ahmet Akib G\u00DCLTEK\u0130N");
+		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Trebuchet MS", Font.PLAIN, 10));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel_1.setBounds(236, 223, 162, 30);

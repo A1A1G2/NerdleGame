@@ -16,6 +16,7 @@ import java.awt.Cursor;
 import java.awt.Component;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import java.awt.Color;
 
 public class testFrame extends JFrame {
 	Random rnd = new Random();
@@ -65,6 +66,13 @@ public class testFrame extends JFrame {
 		});
 		btnNewButton_1.setBounds(367, 10, 59, 45);
 		contentPane.add(btnNewButton_1);
+		
+		JLabel lblNewLabel_1 = new JLabel("20011068 Ahmet Akib G\u00DCLTEK\u0130N");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_1.setForeground(Color.BLACK);
+		lblNewLabel_1.setFont(new Font("Trebuchet MS", Font.PLAIN, 10));
+		lblNewLabel_1.setBounds(274, 192, 162, 30);
+		contentPane.add(lblNewLabel_1);
 		
 	}
 

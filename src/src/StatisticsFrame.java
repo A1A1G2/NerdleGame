@@ -24,7 +24,6 @@ public class StatisticsFrame extends JFrame {
 	 */
 	public StatisticsFrame() {
 		stats = new Statistics(0, 0, 0, 0, false);
-		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 294, 308);
 		contentPane = new JPanel();
@@ -35,7 +34,7 @@ public class StatisticsFrame extends JFrame {
 		
 		JLabel TyaridaBirakilan = new JLabel("Yar\u0131da b\u0131rak\u0131lan oyun say\u0131s\u0131:");
 		TyaridaBirakilan.setToolTipText("Yar\u0131da b\u0131rak\u0131lan oyun say\u0131s\u0131");
-		TyaridaBirakilan.setBounds(10, 46, 144, 13);
+		TyaridaBirakilan.setBounds(10, 46, 162, 13);
 		contentPane.add(TyaridaBirakilan);
 		
 		JLabel yarýdaOyun = new JLabel(Integer.toString(stats.getYarida()));
