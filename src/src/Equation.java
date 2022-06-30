@@ -26,14 +26,14 @@ public class Equation extends EquationExpression {
 		ArrayList<Integer> number = new ArrayList<>();
 		ArrayList<Integer> operator = new ArrayList<>();
 		
-		number.add(rnd.nextInt(9)+1);
-		number.add(rnd.nextInt(9)+1);
+		number.add(rnd.nextInt(33)+1);
+		number.add(rnd.nextInt(33)+1);
 		operator.add(rnd.nextInt(4));
 		checkException(number, operator);
 		
 		if(getLength(number, operator)<7) {
 			operator.add(rnd.nextInt(4));
-			number.add(rnd.nextInt(99)+1);
+			number.add(rnd.nextInt(9)+1);
 			checkException(number, operator);
 		}
 		
